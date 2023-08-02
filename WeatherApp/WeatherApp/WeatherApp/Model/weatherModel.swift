@@ -1,5 +1,5 @@
 //
-//  weatherModel.swift
+//  WeatherModel.swift
 //  WeatherApp
 //
 //  Created by Grishma Dave on 30/07/23.
@@ -109,19 +109,13 @@ struct Current : Codable {
 }
 
 struct WeatherModel : Codable {
-    let location : Location?
-    let current : Current?
+    let location : Location
+    let current : Current
 
     enum CodingKeys: String, CodingKey {
 
         case location = "location"
         case current = "current"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        location = try values.decodeIfPresent(Location.self, forKey: .location)
-        current = try values.decodeIfPresent(Current.self, forKey: .current)
     }
 
 }
@@ -146,18 +140,6 @@ struct Location : Codable {
         case tz_id = "tz_id"
         case localtime_epoch = "localtime_epoch"
         case localtime = "localtime"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        name = try values.decodeIfPresent(String.self, forKey: .name)
-        region = try values.decodeIfPresent(String.self, forKey: .region)
-        country = try values.decodeIfPresent(String.self, forKey: .country)
-        lat = try values.decodeIfPresent(Double.self, forKey: .lat)
-        lon = try values.decodeIfPresent(Double.self, forKey: .lon)
-        tz_id = try values.decodeIfPresent(String.self, forKey: .tz_id)
-        localtime_epoch = try values.decodeIfPresent(Int.self, forKey: .localtime_epoch)
-        localtime = try values.decodeIfPresent(String.self, forKey: .localtime)
     }
 
 }

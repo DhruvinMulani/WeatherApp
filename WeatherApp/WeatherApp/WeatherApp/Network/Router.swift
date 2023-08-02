@@ -6,48 +6,44 @@
 //
 
 import Foundation
-import Alamofire
 
+enum HTTPMethod : String {
+ case get
+case post
+}
 protocol Routeble {
     var path:String {get  }
     var method: HTTPMethod { get  }
-    var parameters: Parameters { get }
+    var parameters: [String:String] { get }
 }
 
 enum Router: Routeble {
     
-    case getCurrentWeather(Parameters)
-    case movieList(Parameters)
-    case swipeGuru(Parameters)
-    case googlePlace(Parameters)
+    case getCurrentWeather(key:String, city:String)
     
     static let localURL = "http://api.weatherapi.com/v1"
     
     var path: String {
         switch self {
-        case .getCurrentWeather:
-            return localURL + "/current.json"
+        case .getCurrentWeather(let key, let city):
+            return Router.localURL + "/current.json" + "?key=\(key)&q=\(city)"
             
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getCurrentWeather,.googlePlace,.movieList:
+        case .getCurrentWeather:
             return .get
-        case .swipeGuru(_):
-            return .post
-            
         }
     }
 }
 
 extension Router {
-    var parameters: Parameters {
+    var parameters: [String:String] {
         switch self {
-        case .getCurrentWeather(let params),.googlePlace(let params),.movieList(let params),.swipeGuru(let params):
-            return params
-            
+        case .getCurrentWeather(_,_):
+            return [:]
         }
     }
 }
