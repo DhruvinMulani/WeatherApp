@@ -24,19 +24,20 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iai-XV-UoJ">
-                        <rect key="frame" x="90" y="15" width="51.333333333333343" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="90" y="15" width="53.333333333333343" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv2-EP-3Hr">
-                        <rect key="frame" x="90" y="43" width="25" height="14.333333333333336"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="90" y="43" width="232" height="14.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Sv2-EP-3Hr" secondAttribute="trailing" constant="10" id="BIr-1W-Lg8"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Sv2-EP-3Hr" secondAttribute="bottom" constant="7" id="UYb-lK-Ti4"/>
                     <constraint firstItem="DKp-oa-31V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="YFh-zh-lXH"/>
                     <constraint firstItem="iai-XV-UoJ" firstAttribute="leading" secondItem="DKp-oa-31V" secondAttribute="trailing" constant="20" id="c1i-Ad-mVv"/>
@@ -48,6 +49,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgWeatherCondition" destination="DKp-oa-31V" id="MDc-hx-q33"/>
+                <outlet property="lblCity" destination="iai-XV-UoJ" id="Djg-9N-OTk"/>
+                <outlet property="lblTemp" destination="Sv2-EP-3Hr" id="i4d-I5-kst"/>
+            </connections>
             <point key="canvasLocation" x="119.08396946564885" y="43.309859154929576"/>
         </tableViewCell>
     </objects>

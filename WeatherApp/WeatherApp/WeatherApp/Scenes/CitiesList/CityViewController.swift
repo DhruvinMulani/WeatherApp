@@ -14,6 +14,7 @@ class CityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = false
         cityTableView?.reloadData()
         // Do any additional setup after loading the view.
     }
@@ -31,6 +32,7 @@ extension CityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableCell", for: indexPath) as? CityTableCell
+        return cell ?? UITableViewCell()
     }
 }

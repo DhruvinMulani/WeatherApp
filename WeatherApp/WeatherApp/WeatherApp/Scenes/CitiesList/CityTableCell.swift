@@ -9,6 +9,9 @@ import UIKit
 
 class CityTableCell: UITableViewCell {
 
-   
+    @IBOutlet private weak var lblCity: UILabel?
+    @IBOutlet private weak var lblTemp: UILabel?
+    @IBOutlet private weak var imgWeatherCondition: UIImageView?
+    
     
 }
