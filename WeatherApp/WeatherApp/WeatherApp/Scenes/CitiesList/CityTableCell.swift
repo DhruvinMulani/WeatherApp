@@ -10,8 +10,14 @@ import UIKit
 class CityTableCell: UITableViewCell {
 
     @IBOutlet private weak var lblCity: UILabel?
-    @IBOutlet private weak var lblTemp: UILabel?
+    @IBOutlet weak var lblTemp: UILabel?
     @IBOutlet private weak var imgWeatherCondition: UIImageView?
     
+    var detailCityData: WeatherModel? {
+        didSet {
+            lblCity?.text = detailCityData?.location.name ?? ""
+            imgWeatherCondition?.image = UIImage(named: "\(detailCityData?.current.condition?.icon ?? "")")
+        }
+    }
     
 }

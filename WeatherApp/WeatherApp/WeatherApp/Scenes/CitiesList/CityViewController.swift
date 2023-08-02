@@ -10,11 +10,15 @@ import UIKit
 class CityViewController: UIViewController {
     
     @IBOutlet private weak var cityTableView: UITableView?
+    var btnC: UIButton!
+    var btnF: UIButton!
 
-
+    var arrayDetailData: [WeatherModel] = [WeatherModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
+        title = " City's Weather Information"
+        self.loadXIB()
         cityTableView?.reloadData()
         // Do any additional setup after loading the view.
     }
@@ -28,11 +32,18 @@ class CityViewController: UIViewController {
 extension CityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+       // return arrayDetailData.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableCell", for: indexPath) as? CityTableCell
+//        cell?.detailCityData = arrayDetailData[indexPath.row]
+//        if btnC.isSelected {
+//            cell?.lblTemp?.text = "\(arrayDetailData[indexPath.row].current.temp_c ?? 0.0) C"
+//        } else if btnF.isSelected {
+//            cell?.lblTemp?.text = "\(arrayDetailData[indexPath.row].current.temp_f ?? 0.0) F"
+//        }
         return cell ?? UITableViewCell()
     }
 }

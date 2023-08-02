@@ -8,9 +8,20 @@
 import UIKit
 import CoreLocation
 
-struct DataWeather {
-    
-}
+//struct DataWeather {
+//    var tempF: String?
+//    var tempC: String?
+//    var cityName: String?
+//    var icon: String?
+//
+//    init(tempF: String? = nil, tempC: String? = nil, cityName: String? = nil, icon: String? = nil) {
+//        self.tempF = tempF
+//        self.tempC = tempC
+//        self.cityName = cityName
+//        self.icon = icon
+//    }
+//
+//}
 class ViewController: UIViewController {
     
     @IBOutlet private weak var txtSearch: UITextField?
@@ -18,13 +29,14 @@ class ViewController: UIViewController {
     @IBOutlet private weak var lblCityName: UILabel?
     @IBOutlet private weak var imgWeatherCondition: UIImageView?
     @IBOutlet private weak var lblWeatherCondition: UILabel?
-    @IBOutlet private weak var btnC: UIButton?
-    @IBOutlet private weak var btnF: UIButton?
+    @IBOutlet private weak var btnC: UIButton!
+    @IBOutlet private weak var btnF: UIButton!
     
     let locationManager = CLLocationManager()
     var tempCelc: String = ""
     var tempFern: String = ""
     var currLatLong: String = ""
+    var arrayCityDetail: [WeatherModel] = [WeatherModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +51,9 @@ class ViewController: UIViewController {
     }
 
     func getCurrentWeather(city: String) {
-
         APIManager.shared.request(route: .getCurrentWeather(key: "0a0b14a2ddd749798a741659232807", city: city), type: WeatherModel.self) { result in
             DispatchQueue.main.async {
+                self.arrayCityDetail.append(result)
                 self.lblCityName?.text = result.location.name ?? ""
                 self.tempCelc = "\(result.current.temp_c ?? 0)"
                 self.tempFern = "\(result.current.temp_f ?? 0)"
@@ -51,8 +63,6 @@ class ViewController: UIViewController {
             print(result.current)
         }
     }
-    
-    
     
     @IBAction private func didTapOnSearch() {
         getCurrentWeather(city: "\(txtSearch?.text ?? "")")
@@ -68,6 +78,12 @@ class ViewController: UIViewController {
     
     @IBAction private func didTapOnCities() {
         let cityVC = storyboard?.instantiateViewController(withIdentifier: "CityViewController") as? CityViewController
+        cityVC?.arrayDetailData = arrayCityDetail
+//        if btnC.isSelected {
+//            cityVC?.btnC.isSelected = true
+//        } else if btnF.isSelected {
+//            cityVC?.btnC.isSelected = true
+//        }
         cityVC?.navigationController?.pushViewController(cityVC ?? CityViewController(), animated: true)
     }
     
