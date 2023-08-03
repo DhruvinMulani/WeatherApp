@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CityTableCell" rowHeight="111" id="KGk-i7-Jjw" customClass="CityTableCell" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="332" height="111"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="332" height="111"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.sun.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DKp-oa-31V">
+                        <rect key="frame" x="20" y="7.3333333333333321" width="50.666666666666671" height="48.666666666666671"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="S1U-EV-Rju"/>
+                            <constraint firstAttribute="height" constant="50" id="ccD-A1-Kvr"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iai-XV-UoJ">
+                        <rect key="frame" x="90" y="15" width="53.333333333333343" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv2-EP-3Hr">
+                        <rect key="frame" x="90" y="43" width="232" height="14.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z0Y-5F-3D9">
+                        <rect key="frame" x="20" y="65.333333333333329" width="292" height="0.6666666666666714"/>
+                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="DVP-9W-7Gu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="z0Y-5F-3D9" firstAttribute="top" secondItem="Sv2-EP-3Hr" secondAttribute="bottom" constant="8" id="0ik-cf-cDI"/>
+                    <constraint firstAttribute="trailing" secondItem="Sv2-EP-3Hr" secondAttribute="trailing" constant="10" id="BIr-1W-Lg8"/>
+                    <constraint firstAttribute="trailing" secondItem="z0Y-5F-3D9" secondAttribute="trailing" constant="20" id="VTL-hh-5h0"/>
+                    <constraint firstItem="DKp-oa-31V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="YFh-zh-lXH"/>
+                    <constraint firstItem="iai-XV-UoJ" firstAttribute="leading" secondItem="DKp-oa-31V" secondAttribute="trailing" constant="20" id="c1i-Ad-mVv"/>
+                    <constraint firstItem="z0Y-5F-3D9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="d8o-Ch-I3y"/>
+                    <constraint firstAttribute="bottom" secondItem="DKp-oa-31V" secondAttribute="bottom" constant="7" id="gsY-7i-o8q"/>
+                    <constraint firstAttribute="bottom" secondItem="z0Y-5F-3D9" secondAttribute="bottom" id="h8T-L0-Qij"/>
+                    <constraint firstItem="Sv2-EP-3Hr" firstAttribute="top" secondItem="iai-XV-UoJ" secondAttribute="bottom" constant="10" id="nMN-N2-y6n"/>
+                    <constraint firstItem="iai-XV-UoJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="w0Z-eT-2hS"/>
+                    <constraint firstItem="DKp-oa-31V" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="ysK-af-KWy"/>
+                    <constraint firstItem="Sv2-EP-3Hr" firstAttribute="leading" secondItem="DKp-oa-31V" secondAttribute="trailing" constant="20" id="zya-WJ-2Zh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgWeatherCondition" destination="DKp-oa-31V" id="MDc-hx-q33"/>
+                <outlet property="lblCity" destination="iai-XV-UoJ" id="Djg-9N-OTk"/>
+                <outlet property="lblTemp" destination="Sv2-EP-3Hr" id="VPU-Un-huw"/>
+            </connections>
+            <point key="canvasLocation" x="119.08396946564885" y="42.605633802816904"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cloud.sun.fill" catalog="system" width="128" height="96"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
