@@ -13,7 +13,7 @@ class APIManager {
     func request<T: Codable>(route: Router,type: T.Type,complition:@escaping(_ result:T) -> Void) {
         
         // Step 1
-        let path: String = route.path
+        let path: String = self.encryptWhitespaceInURL(route.path)
         print(path)
         
         // Step 2
@@ -30,19 +30,6 @@ class APIManager {
                 let decoder: JSONDecoder = JSONDecoder()
                 do {
                     let result = try decoder.decode(type.self, from: responseData)
-                    /*
-                    for joke in jokes.jokes {
-                        
-                        if joke.type == .single {
-                            print(joke.joke ?? "")
-                        } else {
-                            print(joke.setup ?? "")
-                            print("...\(joke.delivery ?? "")")
-                        }
-                        print("")
-                        print("")
-                    }
-                    */
                     complition(result)
                 } catch {
                     print("Error Decodiong \(error.localizedDescription)")
@@ -50,6 +37,11 @@ class APIManager {
             }
             
         }).resume()
+    }
+    
+    func encryptWhitespaceInURL(_ urlString: String) -> String {
+        let encryptedURLString = urlString.replacingOccurrences(of: " ", with: "%20")
+        return encryptedURLString
     }
 }
 

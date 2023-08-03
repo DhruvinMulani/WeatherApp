@@ -8,20 +8,6 @@
 import UIKit
 import CoreLocation
 
-//struct DataWeather {
-//    var tempF: String?
-//    var tempC: String?
-//    var cityName: String?
-//    var icon: String?
-//
-//    init(tempF: String? = nil, tempC: String? = nil, cityName: String? = nil, icon: String? = nil) {
-//        self.tempF = tempF
-//        self.tempC = tempC
-//        self.cityName = cityName
-//        self.icon = icon
-//    }
-//
-//}
 class ViewController: UIViewController {
     
     @IBOutlet private weak var txtSearch: UITextField?
@@ -43,6 +29,7 @@ class ViewController: UIViewController {
         txtSearch?.delegate = self
         btnC?.layer.cornerRadius = 5
         btnF?.layer.cornerRadius = 5
+        setUpWeatherIcon()
         // Do any additional setup after loading the view.
     }
     
@@ -64,27 +51,43 @@ class ViewController: UIViewController {
         }
     }
     
+    func setUpWeatherIcon() {
+        let colorsConfig = UIImage.SymbolConfiguration(paletteColors: [.blue, .yellow])
+        let sizeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold)
+        let image = UIImage(systemName: "cloud.sun.fill", withConfiguration: colorsConfig.applying(sizeConfig))
+        imgWeatherCondition?.image = image
+    }
+    
     @IBAction private func didTapOnSearch() {
         getCurrentWeather(city: "\(txtSearch?.text ?? "")")
     }
     
     @IBAction private func didTapOnCelc(_ sender: UIButton) {
         lblTemprature?.text = tempCelc
+        sender.backgroundColor = UIColor(named: "SelectedTemp")
+        btnF.backgroundColor = UIColor(named: "UnSelectedTemp")
+        sender.isSelected = true
+        btnF.isSelected = false
     }
     
     @IBAction private func didTapnOnFernhit(_ sender: UIButton) {
         lblTemprature?.text = tempFern
+        sender.backgroundColor = UIColor(named: "SelectedTemp")
+        btnC.backgroundColor = UIColor(named: "UnSelectedTemp")
+        sender.isSelected = true
+        btnC.isSelected = false
     }
     
     @IBAction private func didTapOnCities() {
-        let cityVC = storyboard?.instantiateViewController(withIdentifier: "CityViewController") as? CityViewController
-        cityVC?.arrayDetailData = arrayCityDetail
-//        if btnC.isSelected {
-//            cityVC?.btnC.isSelected = true
-//        } else if btnF.isSelected {
-//            cityVC?.btnC.isSelected = true
-//        }
-        cityVC?.navigationController?.pushViewController(cityVC ?? CityViewController(), animated: true)
+        if let cityVC = storyboard?.instantiateViewController(withIdentifier: "CityViewController") as? CityViewController {
+            cityVC.arrayDetailData = arrayCityDetail
+            if btnC.isSelected {
+                cityVC.btnC.isSelected = true
+            } else if btnF.isSelected {
+                cityVC.btnF.isSelected = true
+            }
+            self.navigationController?.pushViewController(cityVC, animated: true)
+        }
     }
     
     @IBAction private func didTapOnCurrentWeather() {
