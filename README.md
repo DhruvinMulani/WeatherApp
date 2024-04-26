@@ -8,8 +8,5 @@ weatherApp is a Swift-based project designed to provide users with real-time wea
 ![App Screenshot](https://i.postimg.cc/5tD4MXvn/Untitled-design-8-2.png)
 
 
-## Logo
-
-![Logo](https://i.postimg.cc/t4Xp3gsJ/216.png)
 
 
